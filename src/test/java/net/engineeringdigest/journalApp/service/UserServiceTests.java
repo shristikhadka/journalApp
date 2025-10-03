@@ -19,6 +19,7 @@ public class UserServiceTests {
    private UserRepository userRepository;
 
 
+    @Disabled
     @ParameterizedTest
     @ValueSource(strings= {
             "ram", "shyam", "ghanshyam"

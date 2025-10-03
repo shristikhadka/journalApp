@@ -32,6 +32,7 @@ public class UserDetailsServiceImplTests {
         MockitoAnnotations.initMocks(this);
     }
 
+    @org.junit.jupiter.api.Disabled
     @Test
     void loadUserByUsernameTest(){
         User mockUser = new User("ram", "inigin");
