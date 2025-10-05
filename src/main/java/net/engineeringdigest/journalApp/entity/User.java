@@ -1,9 +1,6 @@
 package net.engineeringdigest.journalApp.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -15,8 +12,9 @@ import java.util.List;
 
 @Document(collection="users")
 @Data
-@NoArgsConstructor(force = true)
-@RequiredArgsConstructor
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User
 {
     @Id
@@ -24,9 +22,11 @@ public class User
     @Indexed(unique = true)
     @NonNull
     private String userName;
+    private String email;
+    private boolean sentimentAnalysis;
     @NonNull
     private String password;
-    @DBRef
+    @DBRef //DBRef is a Spring Data MongoDB annotation
     private List<JournalEntry> journalEntries=new ArrayList<>();
     private List<String>roles;
 }

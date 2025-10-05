@@ -35,9 +35,13 @@ public class UserDetailsServiceImplTests {
     @org.junit.jupiter.api.Disabled
     @Test
     void loadUserByUsernameTest(){
-        User mockUser = new User("ram", "inigin");
-        mockUser.setRoles(Arrays.asList("USER"));
-        when(userRepository.findByUserName(ArgumentMatchers.anyString())).thenReturn(mockUser);
+        when(userRepository.findByUserName(ArgumentMatchers.anyString())).thenReturn(
+            User.builder()
+                .userName("ram")
+                .password("inigin")
+                .roles(Arrays.asList("USER"))
+                .build()
+        );
         UserDetails user=userDetailsService.loadUserByUsername("ram");
         Assertions.assertNotNull(user);
     }
